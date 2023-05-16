@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPencil, faPalette } from '@fortawesome/free-solid-svg-icons'
 
 import BG from '../../assets/bg.png'
+import { Link } from 'react-router-dom'
 
 function MainPage() {
   const [latest, setLatest] = useState([])
@@ -35,7 +36,7 @@ function MainPage() {
 
         <div className='w-[80vw] flex flex-wrap justify-center items-center'>
           { latest.map((el: any, idx: number) => (
-            <div key={idx} className='card m-12 rounded-xl flex items-center justify-center transition duration-300 hover:scale-105 cursor-pointer'>
+            <Link to='/novel' state={{ el: el }} key={idx} className='card m-12 rounded-xl flex items-center justify-center transition duration-300 hover:scale-105 cursor-pointer'>
               <img className='w-[150px] h-[200px] rounded-lg object-cover z-10' src={el.cover} alt="" />
               <div className='w-[250px] h-[180px] pl-12 pt-4 pr-4 -ml-6 bg-white rounded-lg border-[.5px] border-zinc-200'>
                 <div className='font-[Noto] font-[700] text-xl w-[180px] mb-4 truncate'>{ el.title }</div>
@@ -48,10 +49,8 @@ function MainPage() {
                   <div className='font-[Noto] font-[400] text-md'>{ el.author.split(', ')[1].split(' (')[0] }</div>
                 </div>
                 <div className='font-[Lexend] font-[600] text-lg'>₩{ el.priceStandard }</div>
-
-
               </div>
-            </div>
+            </Link>
           )) }
         </div>
 
